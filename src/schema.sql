@@ -183,3 +183,6 @@ CREATE TABLE equipment_maintenance_log (
     FOREIGN KEY (equipment_id) REFERENCES equipment(equipment_id) ON DELETE CASCADE,
     FOREIGN KEY (staff_id) REFERENCES staff(staff_id) ON DELETE SET NULL
 );
+
+-- Populate tables with data 
+.read scripts/sample_data.sql
