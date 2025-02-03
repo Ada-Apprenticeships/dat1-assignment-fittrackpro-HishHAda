@@ -19,7 +19,7 @@ VALUES (11, 50.00, CURRENT_TIMESTAMP, 'Credit Card', 'Monthly membership fee');
 -- TODO: Write a query to calculate total revenue from membership fees for each month of the current year
 
 SELECT 
-    strftime('%Y-%m', payment_date) AS month, 
+    strftime('%Y-%m', payment_date) AS month, -- formatting date value as YYYY-MM
     SUM(amount) AS total_revenue
 FROM payments
 WHERE payment_type = 'Monthly membership fee'
@@ -30,7 +30,11 @@ ORDER BY month;
 -- 3. Find all day pass purchases
 -- TODO: Write a query to find all day pass purchases
 
-SELECT payment_id, amount, payment_date, payment_method
+SELECT 
+    payment_id, 
+    amount, 
+    payment_date, 
+    payment_method
 FROM payments
 WHERE payment_type = 'Day pass'
 ORDER BY payment_date DESC;
