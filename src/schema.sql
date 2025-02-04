@@ -109,7 +109,7 @@ CREATE TABLE class_schedule (
 CREATE TABLE memberships (
     membership_id INTEGER PRIMARY KEY AUTOINCREMENT,
     member_id INTEGER NOT NULL,
-    type TEXT NOT NULL,
+    type TEXT CHECK(type IN ('Basic', 'Premium')) NOT NULL DEFAULT 'Basic',
     start_date DATE NOT NULL,
     end_date DATE,
     status TEXT CHECK(status IN ('Active', 'Inactive')) NOT NULL DEFAULT 'Active',
