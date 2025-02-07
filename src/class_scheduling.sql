@@ -28,7 +28,9 @@ SELECT
     c.name, 
     cs.start_time, 
     cs.end_time,
-    (c.capacity - COALESCE((SELECT COUNT(*) FROM class_attendance ca -- COALESCE so 0 returned instead of NULL when no rows in class attendance
+    (c.capacity - COALESCE((SELECT 
+                                COUNT(*) 
+                            FROM class_attendance ca -- COALESCE so 0 returned instead of NULL when no rows in class attendance
                             WHERE ca.schedule_id = cs.schedule_id), 0)) AS available_spots
 FROM class_schedule cs
 JOIN classes c ON cs.class_id = c.class_id
@@ -63,5 +65,6 @@ LIMIT 3;
 -- 6. Calculate average number of classes per member
 -- TODO: Write a query to calculate average number of classes per member
 
-SELECT ROUND((COUNT(*) * 1.0 / (SELECT COUNT(*) FROM members)),2) AS avg_classes_per_member -- Multiplied by 1.0 to avoid whole number division occuring 
+SELECT 
+    ROUND((COUNT(*) * 1.0 / (SELECT COUNT(*) FROM members)),2) AS avg_classes_per_member -- Multiplied by 1.0 to avoid whole number division occuring 
 FROM class_attendance;

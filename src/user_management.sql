@@ -32,7 +32,7 @@ WHERE member_id = 5;
 -- TODO: Write a query to count the total number of members
 
 SELECT 
-COUNT(*) AS total_members, 
+    COUNT(*) AS total_members 
 FROM members; 
 
 -- 4. Find member with the most class registrations
